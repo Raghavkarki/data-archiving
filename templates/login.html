@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - Report Manager</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --primary-color: #2e7d32;
+      --accent-color: #81c784;
+      --danger-color: #e53935;
+      --card-bg: #ffffff;
+      --bg-gradient: linear-gradient(135deg, #e0f7e9, #c8e6c9);
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-gradient);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-container {
+      background-color: var(--card-bg);
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .login-container:hover {
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .login-container img {
+      max-width: 80px;
+      margin-bottom: 20px;
+    }
+
+    .login-container h2 {
+      margin-bottom: 25px;
+      color: var(--primary-color);
+      font-size: 24px;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      box-sizing: border-box;
+      transition: border-color 0.2s;
+    }
+
+    input[type="text"]:focus,
+    input[type="password"]:focus {
+      border-color: var(--primary-color);
+      outline: none;
+    }
+
+    button {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #1b5e20;
+    }
+
+    .error-message {
+      color: var(--danger-color);
+      margin-top: 15px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="login-container">
+  <img src="{{ url_for('static', filename='logo.PNG') }}" alt="Logo">
+  <h2>Data Archiving</h2>
+  <form method="POST" action="/login">
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <button type="submit">🔐 Login</button>
+    {% if error %}
+      <div class="error-message">{{ error }}</div>
+    {% endif %}
+  </form>
+</div>
+
+</body>
+</html>
