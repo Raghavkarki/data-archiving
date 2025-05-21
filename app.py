@@ -168,4 +168,4 @@ def delete_all_reports():
         return jsonify(success=False, message=f"Error deleting reports: {e}")
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=1000, debug=True)
+    app.run(host="127.0.0.1", port=8000, debug=True)
